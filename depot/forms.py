@@ -1,32 +1,33 @@
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, HTML, Fieldset, Field, Submit
+from crispy_forms.layout import Layout, Fieldset, Field, Submit
 from django import forms
 
-from .models import ImageUpload
+from .models import FitsFileUpload
 
 
-class ImageUploadForm(forms.ModelForm):
-
+class FitsFileUploadForm(forms.ModelForm):
     class Meta:
-        model = ImageUpload
+        model = FitsFileUpload
         exclude = ['timestamp']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
+        # self.helper.form_method = 'POST'
         self.helper.layout = Layout(
-            ImageUploadFormLayout(),
+            FitsFileUploadFormLayout(),
             SubmitButton()
         )
 
 
-class ImageUploadFormLayout(Layout):
+class FitsFileUploadFormLayout(Layout):
     def __init__(self, *args, **kwargs):
         super().__init__(
             Layout(
                 Fieldset(
                     "text",
                     Field('file', ),
+                    Field('test', ),
                 )
             )
         )
