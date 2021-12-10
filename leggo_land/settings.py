@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'registration',  # should be immediately above 'django.contrib.admin'
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # local
+    'lobby',
     'depot',
 
     # third pary
@@ -134,13 +136,18 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
 MEDIA_ROOT = os.path.join(DATA_DIR, 'media_cdn')
 
-
-
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# django registration settings
+# https://django-registration.readthedocs.io/en/3.2/quickstart.html
+
+ACCOUNT_ACTIVATION_DAYS = 7  # One-week activation window
+
+SIMPLE_BACKEND_REDIRECT_URL = '/land/'
+
+LOGIN_REDIRECT_URL = '/land/'

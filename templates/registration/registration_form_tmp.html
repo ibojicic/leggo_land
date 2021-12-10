@@ -1,0 +1,100 @@
+{% extends "registration/registration_base.html" %}
+
+{% block registration_form %}
+
+    <form class="login-form" method="post" action="">
+        {% csrf_token %}
+        <div class="card mb-0">
+            <div class="card-body">
+                <div class="text-center mb-3">
+                    <i class="icon-plus3 icon-2x text-success border-success border-3 rounded-round p-3 mb-3 mt-1"></i>
+                    <h5 class="mb-0">Create account</h5>
+                    <span class="d-block text-muted">All fields are required</span>
+                </div>
+
+                <div class="form-group text-center text-muted content-divider">
+                    <span class="px-2">Your credentials</span>
+                </div>
+
+
+                <!-- Username -->
+                <div class="form-group form-group-feedback form-group-feedback-left">
+
+                    <input name='username' id='id_username' required type="text" class="form-control"
+                           placeholder="Choose username">
+
+                    <div class="form-control-feedback">
+                        <i class="icon-user-check text-muted"></i>
+                    </div>
+
+                </div>
+                <!-- end Username -->
+
+                <!-- password 1 -->
+                <div class="form-group form-group-feedback form-group-feedback-left">
+                    <input type="password" name='password1' required id='id_password1'
+                           class="form-control" placeholder="Create password">
+                    <div class="form-control-feedback">
+                        <i class="icon-user-lock text-muted"></i>
+                    </div>
+                </div>
+                <!-- end password 1 -->
+
+                <!-- password 2 -->
+                <div class="form-group form-group-feedback form-group-feedback-left">
+                    <input type="password" name='password2' required id='id_password2'
+                           class="form-control" placeholder="Repeat password">
+                    <div class="form-control-feedback">
+                        <i class="icon-user-lock text-muted"></i>
+                    </div>
+                </div>
+                <!-- end password 2 -->
+
+
+                <div class="form-group text-center text-muted content-divider">
+                    <span class="px-2">Your contacts</span>
+                </div>
+
+                <div class="form-group form-group-feedback form-group-feedback-left">
+                    <input type="email" name='email' required id='id_email'
+                           class="form-control" placeholder="Your email">
+                    <div class="form-control-feedback">
+                        <i class="icon-mention text-muted"></i>
+                    </div>
+                </div>
+
+
+                <div class="form-group text-center text-muted content-divider">
+                    <span class="px-2">Additions</span>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" name="remember" class="form-input-styled" checked data-fouc>
+                            Send me <a href="#">test account settings</a>
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" name="remember" class="form-input-styled" checked data-fouc>
+                            Subscribe to monthly newsletter
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" name="remember" class="form-input-styled" data-fouc>
+                            Accept <a href="#">terms of service</a>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn bg-teal-400 btn-block">Register <i class="icon-circle-right2 ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

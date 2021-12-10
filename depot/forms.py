@@ -25,9 +25,8 @@ class FitsFileUploadFormLayout(Layout):
         super().__init__(
             Layout(
                 Fieldset(
-                    "text",
-                    Field('file', ),
-                    Field('test', ),
+                    "Upload FITS file",
+                    Field('fits_file', ),
                 )
             )
         )

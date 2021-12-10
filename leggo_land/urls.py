@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-import depot
+import depot, lobby
 from django.urls import path, include, re_path
 
 urlpatterns = [
+    path('', include('lobby.urls')),
     path('admin/', admin.site.urls),
-    path('', include('depot.urls')),
+    path('accounts/', include('registration.backends.simple.urls')),
+    path('register/', include('register.urls')),
+    path('land/', include('depot.urls')),
 ]

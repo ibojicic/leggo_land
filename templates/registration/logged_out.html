@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+
+{% block login_content %}
+  <p>Logged out!</p>
+  <a href="{% url 'auth_login'%}">Click here to login again.</a>
+{% endblock %}

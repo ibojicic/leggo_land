@@ -3,4 +3,5 @@ from .views import *
 
 urlpatterns = [
     path('submit-fits', SubmitFitsFileFormView.as_view(), name='submit_fits_file_form_view'),
+    path('', SubmitFitsFileFormView.as_view(), name='submit_fits_file_form_view'),
 ]
