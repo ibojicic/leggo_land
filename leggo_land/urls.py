@@ -15,8 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-import depot, lobby
+import depot, lobby, workbench
 from django.urls import path, include, re_path
+
+
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('', include('lobby.urls')),
@@ -24,4 +28,8 @@ urlpatterns = [
     path('accounts/', include('registration.backends.simple.urls')),
     path('register/', include('register.urls')),
     path('land/', include('depot.urls')),
+    path('workbench/', include('workbench.urls')),
+    path('locator/', include('locator.urls')),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,65 +1,46 @@
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Fieldset, Field, Submit
+from crispy_forms.layout import Layout, Row, Column, Fieldset, Field, Submit
 from django import forms
 
-from .models import FFUpload, FF
+from .models import CoordinateSearch
 
 
-class FitsFileUploadForm(forms.ModelForm):
+class CoordinateSearchForm(forms.ModelForm):
     class Meta:
-        model = FFUpload
-        exclude = ['timestamp', 'user', 'file_size', 'file_hash', 'parsed_header']
+        model = CoordinateSearch
+        # exclude = ['timestamp']
+        fields = '__all__'
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         # self.helper.form_method = 'POST'
         self.helper.layout = Layout(
-            FitsFileUploadFormLayout(),
+            CoordinateSearchFormLayout(),
             SubmitButton()
         )
 
 
-class FitsFileUploadFormLayout(Layout):
+class CoordinateSearchFormLayout(Layout):
     def __init__(self, *args, **kwargs):
         super().__init__(
             Layout(
                 Fieldset(
-                    "Upload FITS file",
-                    Field('file_upload', ),
-                    Field('telescope', ),
-                    Field('description', ),
+                    "Search Position",
+                    Row(
+                        Column(
 
-                )
-            )
-        )
-
-
-class FitsDetailsForm(forms.ModelForm):
-    class Meta:
-        model = FF
-        exclude = ['file_upload', 'fits', 'parsed_header', 'naxis3', 'naxis4', 'active',
-                   'footprint', 'center_x', 'center_y', 'radius']
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        # self.helper.form_method = 'POST'
-        self.helper.layout = Layout(
-            FitsDetailsLayout(),
-            SubmitButton()
-        )
-
-
-class FitsDetailsLayout(Layout):
-    def __init__(self, *args, **kwargs):
-        super().__init__(
-            Layout(
-                Fieldset(
-                    "FITS file details",
-                    Field('name', ),
-                    Field('frequency', ),
-                    Field('units', ),
+                            Field('input_coordinates', ),
+                        ),
+                    ),
+                    Row(
+                        Column(
+                            Field('input_frame', ),
+                        ),
+                        Column(
+                            Field('input_units', ),
+                        ),
+                    )
                 )
             )
         )

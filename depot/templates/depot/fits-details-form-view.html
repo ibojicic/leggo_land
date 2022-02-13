@@ -1,0 +1,33 @@
+{% extends 'base-land.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-6">
+            {% include "depot/working-fits-file-form.html" %}
+        </div>
+        <div class="col-md-6">
+            {% include "depot/uploaded-fits-file-info.html" %}
+
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block extrajs %}
+    <!-- Page specific script -->
+    <script>
+        $(function () {
+            $("#headertable").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["csv", "pdf", "print"]
+            }).buttons().container().appendTo('#headertable_wrapper .col-md-6:eq(0)');
+        });
+    </script>
+
+{% endblock %}

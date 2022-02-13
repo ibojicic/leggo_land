@@ -1,0 +1,25 @@
+{% load render_table from django_tables2 %}
+
+<div class="card card-secondary">
+
+    <div class="card-header">
+        <h3 class="card-title">Uploaded Fits File Info</h3>
+    </div>
+
+    <div class="card-body" style="display: block;">
+
+        <h2><a href="{{ file_upload.file_upload.url }}">File: {{ file_upload.file_upload.name }}</a></h2>
+        <hr>
+        <h4>User: {{ file_upload.user }}</h4>
+        <h4>Uploaded: {{ file_upload.timestamp }}</h4>
+        <h4>Telescope: {{ file_upload.telescope }}</h4>
+        <h4>File Size: {{ file_upload.human_file_size }}</h4>
+        <hr>
+        <h4>Description:</h4>
+        <p>{{ file_upload.description }}</p>
+        <hr>
+        <h5>Header:</h5>
+        {% render_table header_table %}
+    </div>
+    <!-- /.card-body -->
+</div>

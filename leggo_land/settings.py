@@ -42,10 +42,14 @@ INSTALLED_APPS = [
     # local
     'lobby',
     'depot',
+    'workbench',
+    'locator',
 
     # third pary
     'django_extensions',
     'crispy_forms',
+    'django_tables2',
+    'django_filters',
 
 ]
 
@@ -85,10 +89,21 @@ WSGI_APPLICATION = 'leggo_land.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME'  : BASE_DIR / 'db.sqlite3',
+        'ENGINE'  : 'django.db.backends.postgresql_psycopg2',
+        'NAME'    : 'leggo_land',
+        'USER'    : 'leggoadmin',
+        'PASSWORD': 'i.am.leggoadmin',
+        'HOST'    : 'localhost',
+        'POST'    : '',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME'  : BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

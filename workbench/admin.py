@@ -4,8 +4,6 @@ from django.contrib import admin
 from django.contrib import admin
 
 # Register your models here.
-from .models import FFUpload, FF, FFHeader
+from .models import CoordinateSearch
 
-admin.site.register(FFUpload)
-admin.site.register(FF)
-admin.site.register(FFHeader)
+admin.site.register(CoordinateSearch)
