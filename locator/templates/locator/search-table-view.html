@@ -5,21 +5,7 @@
 
 {% block content %}
 
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <form method="get">
-                <div class="input-group">
-                    <input name="position" type="search" class="form-control form-control-lg" placeholder="Coordinates">
-                    <div class="input-group-append">
-                        <button type="submit" class="btn btn-lg btn-default">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
+    {% include 'search-position-form.html' %}
     <br>
 
     <div class="row">

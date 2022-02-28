@@ -2,7 +2,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Row, Column, Fieldset, Field, Submit
 from django import forms
 
-from .models import CoordinateSearch
+from .models import CoordinateSearch, CoordinateFrameChoices, CoutouUnitsChoices
 
 
 class CoordinateSearchForm(forms.ModelForm):
@@ -31,6 +31,48 @@ class CoordinateSearchFormLayout(Layout):
                         Column(
 
                             Field('input_coordinates', ),
+                        ),
+                    ),
+                    Row(
+                        Column(
+                            Field('input_frame', ),
+                        ),
+                        Column(
+                            Field('input_units', ),
+                        ),
+                    )
+                )
+            )
+        )
+
+class CutoutForm(forms.Form):
+    x_offset = forms.CharField()
+    y_offset = forms.CharField()
+    input_frame = forms.ChoiceField(choices=CoordinateFrameChoices.choices)
+    input_units = forms.ChoiceField(choices=CoutouUnitsChoices.choices)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        # self.helper.form_method = 'POST'
+        self.helper.layout = Layout(
+            CutoutFormLayout(),
+            SubmitButton()
+        )
+
+
+class CutoutFormLayout(Layout):
+    def __init__(self, *args, **kwargs):
+        super().__init__(
+            Layout(
+                Fieldset(
+                    "Make Cutout",
+                    Row(
+                        Column(
+                            Field('x_offset', ),
+                        ),
+                        Column(
+                            Field('y_offset', ),
                         ),
                     ),
                     Row(

@@ -11,16 +11,22 @@ class CoordinateFrameChoices(models.TextChoices):
     Galactic = 'galactic', _('Galactic')
 
 
-class InputUnitsChoices(models.TextChoices):
+class CoordinateUnitsChoices(models.TextChoices):
     HMSDMS = 'hmsdms', _('hmsdms')
     DEG = 'deg', _('deg')
+
+
+class CoutouUnitsChoices(models.TextChoices):
+    DEG = 'deg', _('deg')
+    MIN = 'min', _('min')
+    SEC = 'sec', _('sec')
 
 
 class CoordinateSearch(models.Model):
     input_coordinates = models.CharField(max_length=120)
     input_frame = models.CharField(max_length=20, choices=CoordinateFrameChoices.choices,
                                    default=CoordinateFrameChoices.ICRS)
-    input_units = models.CharField(max_length=10, choices=InputUnitsChoices.choices, default=InputUnitsChoices.HMSDMS)
+    input_units = models.CharField(max_length=10, choices=CoordinateUnitsChoices.choices, default=CoordinateUnitsChoices.HMSDMS)
 
     gal_b = models.FloatField(null=True, blank=True)
     gal_l = models.FloatField(null=True, blank=True)
